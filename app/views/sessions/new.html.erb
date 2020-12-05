@@ -1,0 +1,21 @@
+<div class="w-10/12 lg:w-1/4 mx-auto">
+<h1 class="text-xl py-2 text-center">Login</h1>
+
+<div class="p-4 rounded-lg bg-white">
+<%= form_tag sessions_path do |form| %>
+  <div class="field">
+    <div><%= label_tag :email %></div>
+    <div class="rounded border mb-2"><%= text_field_tag :email, nil, class: 'w-full' %></div>
+  </div>
+  <div class="field">
+    <div><%= label_tag :password  %></div>
+    <div class="rounded border mb-2"><%= password_field_tag :password, nil, class: 'w-full' %></div>
+  </div>
+  <div class="actions">
+    <%= submit_tag "Login", class: "bg-yellow-500 w-full py-1 rounded text-white cursor-pointer hover:bg-gray-600" %>
+  </div>
+  
+<% end %>
+</div>
+<%= link_to "Need An Account?", signup_path, class: "block py-2 hover:text-yellow-500 text-center" %>
+</div>

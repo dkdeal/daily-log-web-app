@@ -1,0 +1,21 @@
+
+<h1 class="text-xl py-4 mx-4 text-3xl font-bold" style="color: #4F5D75"><%= @dateString %></h1>
+<%= render 'form', entry: @entry %>
+<% @entries.each do |entry| %>
+    <div class="m-4 flex">
+        <div class="p-4 shadow hover:shadow-lg w-full rounded-lg  bg-white flex justify-between">
+        <%= link_to edit_entry_path(entry) do %>
+            <div>
+                <%= entry.content %>
+            </div>
+        <% end %>
+        <%= link_to entry, method: :delete, data: { confirm: 'Are you sure?' }, class: "hover:bg-none hover:text-yellow-500" do  %>
+            <i class="las la-trash-alt"></i>
+        <% end %>
+        </div>
+    </div>
+<% end %>
+
+<% if @count == 0 %>
+    <p class="block text-center py-4 w-full text-gray-400">No Entries Found</p>
+<% end %>

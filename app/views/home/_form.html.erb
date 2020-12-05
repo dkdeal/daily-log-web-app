@@ -1,0 +1,26 @@
+<div class="mx-4 lg:mx-0">
+<%= form_with(model: entry, local: true) do |form| %>
+    <% if entry.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(entry.errors.count, "error") %> prohibited this entry from being saved:</h2>
+  
+        <ul>
+          <% entry.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="block lg:flex justify-between">
+    <div class="field w-full lg:w-5/6 my-2 lg:my-0 lg:mx-4">
+    
+      <%= form.text_field :content, placeholder: "Add Entry...", class: "w-full p-2 rounded-full shadow"%>
+    </div>
+    
+    <div class="actions flex justify-center w-full lg:w-1/6 lg:mr-4">
+      <%= form.submit "Add", class:"bg-yellow-500 w-full hover:bg-gray-900 hover:text-white p-2 px-4 lg:px-8 rounded-full  cursor-pointer shadow"%>
+    </div>
+    </div>
+  <% end %>
+
+</div>

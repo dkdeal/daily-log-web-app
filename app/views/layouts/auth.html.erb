@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DailyLog</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="bg-gray-100 m-0">
+    <header class=" py-4 ">
+      <div class="w-5/6 mx-auto">
+        <div class="flex justify-center mx-4">
+          <div>
+            <h1 class="font-bold text-yellow-500">DailyLog</h1>
+          </div>    
+      </div>
+    </header>
+    <% flash.each do |key, value| %>
+      <div class="bg-gray-200 text-gray-500">
+        <div class="w-11/12 lg:w-5/6 mx-auto py-4">
+            <p class="mx-4"><%= value %></p>
+        </div>
+      </div>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>
