@@ -1,11 +1,6 @@
 class EntriesController < ApplicationController
   before_action :set_entry, only: [:edit, :update, :destroy]
 
-  # GET /entries/new
-  def new
-    @entry = Entry.new
-  end
-
   # GET /entries/1/edit
   def edit
   end
@@ -25,10 +20,8 @@ class EntriesController < ApplicationController
         dateArr = date.split('/')
 
         format.html { redirect_to daily_path(dateArr[0], dateArr[1], dateArr[2]), notice: 'Entry was successfully created.' }
-        format.json { render :show, status: :created, location: @entry }
       else
         format.html { render :new }
-        format.json { render json: @entry.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -44,10 +37,8 @@ class EntriesController < ApplicationController
         dateArr = date.split('/')
         
         format.html { redirect_to daily_path(dateArr[0], dateArr[1], dateArr[2]), notice: 'Entry was successfully updated.' }
-        format.json { render :show, status: :ok, location: @entry }
       else
         format.html { render :edit }
-        format.json { render json: @entry.errors, status: :unprocessable_entity }
       end
     end
   end

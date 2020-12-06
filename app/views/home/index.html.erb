@@ -1,14 +1,14 @@
 
 
-<h1 class="text-xl py-4 mx-4 text-3xl font-bold" style="color: #4F5D75">Dashboard</h1>
+<h1 class="text-xl py-4 mx-4 text-3xl font-bold">Dashboard</h1>
 <%= render 'form', entry: @entry %>
 <div class="block md:flex lg:flex mt-4">
     <% @entries.each do |entry| %>
         <%= link_to daily_path(entry.entry_date.split("/")[0], entry.entry_date.split("/")[1], entry.entry_date.split("/")[2]), class: "block my-2 lg:my-0 md:my-0 md:w-1/2 lg:w-1/4" do %>
         <div class="">
             <div class="py-8 mx-4 bg-white shadow rounded-lg flex flex-col justify-center items-center hover:shadow-lg cursor-pointer">
-                <h1 class="my-2 text-xl font-bold" style="color: #4F5D75"><%= entry.entry_date %></h1>
-                <p class=""><%= entry.count %> <%= (entry.count > 1) ? "Entries" : "Entry" %> </p>
+                <h1 class="my-2 text-xl font-bold" ><%= entry.entry_date %></h1>
+                <p class="text-sm text-gray-500"><%= entry.count %> <%= (entry.count > 1) ? "Entries" : "Entry" %> </p>
             
                 
             </div>
