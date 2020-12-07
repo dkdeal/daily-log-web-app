@@ -4,7 +4,6 @@ class HomeController < ApplicationController
     @entry = Entry.new
 
     @count = @entries.length
-
   end
 
   def daily

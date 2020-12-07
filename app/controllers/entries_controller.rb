@@ -14,12 +14,11 @@ class EntriesController < ApplicationController
 
     respond_to do |format|
       if @entry.save
-
         time = Time.new
-        date = time.strftime('%m/%d/%Y')
-        dateArr = date.split('/')
+        date = time.strftime("%m/%d/%Y")
+        dateArr = date.split("/")
 
-        format.html { redirect_to daily_path(dateArr[0], dateArr[1], dateArr[2]), notice: 'Entry was successfully created.' }
+        format.html { redirect_to daily_path(dateArr[0], dateArr[1], dateArr[2]), notice: "Entry was successfully created." }
       else
         format.html { render :new }
       end
@@ -31,12 +30,11 @@ class EntriesController < ApplicationController
   def update
     respond_to do |format|
       if @entry.update(entry_params)
-
         created = @entry.created_at
-        date = created.strftime('%m/%d/%Y')
-        dateArr = date.split('/')
-        
-        format.html { redirect_to daily_path(dateArr[0], dateArr[1], dateArr[2]), notice: 'Entry was successfully updated.' }
+        date = created.strftime("%m/%d/%Y")
+        dateArr = date.split("/")
+
+        format.html { redirect_to daily_path(dateArr[0], dateArr[1], dateArr[2]), notice: "Entry was successfully updated." }
       else
         format.html { render :edit }
       end
@@ -46,26 +44,26 @@ class EntriesController < ApplicationController
   # DELETE /entries/1
   # DELETE /entries/1.json
   def destroy
-
     created = @entry.created_at
-    date = created.strftime('%m/%d/%Y')
-    dateArr = date.split('/')
+    date = created.strftime("%m/%d/%Y")
+    dateArr = date.split("/")
 
     @entry.destroy
     respond_to do |format|
-      format.html { redirect_to daily_path(dateArr[0], dateArr[1], dateArr[2]), notice: 'Entry was successfully destroyed.' }
+      format.html { redirect_to daily_path(dateArr[0], dateArr[1], dateArr[2]), notice: "Entry was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_entry
-      @entry = Entry.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def entry_params
-      params.require(:entry).permit(:content, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_entry
+    @entry = Entry.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def entry_params
+    params.require(:entry).permit(:content, :user_id)
+  end
 end
